@@ -8,6 +8,7 @@ public class Main {
         LCDPanel display = new LCDPanel(window, 20, 9);
         window.add(display);
 
+        FontLoader.loadFont("font.txt");
         drawInit(display);
 
         window.setSize(display.getSize());
@@ -19,7 +20,6 @@ public class Main {
     }
 
     private static void drawInit(LCDPanel display) {
-        display.fillRect(0, 0, 7, 5, true);
-        display.fillRect(8, 0, 5, 7, true);
+        display.drawLineSequence(FontLoader.font.get('0'), 0, 1);
     }
 }

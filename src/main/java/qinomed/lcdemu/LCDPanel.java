@@ -35,7 +35,9 @@ public class LCDPanel extends MotionPanel {
     * */
 
     public void setPixel(int x, int y, boolean active) {
-        screen[y][x] = active;
+        try {
+            screen[y][x] = active;
+        } catch (ArrayIndexOutOfBoundsException ignored) {}
     }
 
     public void togglePixel(int x, int y) {
@@ -61,7 +63,7 @@ public class LCDPanel extends MotionPanel {
         int error = dx + dy;
 
         while (true) {
-            screen[y0][x0] = active;
+            this.setPixel(x0, y0, active);
             if (x0 == x1 && y0 == y1)
                 break;
 
@@ -77,6 +79,21 @@ public class LCDPanel extends MotionPanel {
                 y0 += sy;
             }
         }
+    }
+    
+    public void drawLineSequence(int[] lines, int x, int y) {
+        if (lines.length % 4 != 0) {
+            System.err.println("Error: Incorrect line sequence!");
+            return;
+        }
+
+        for (int i = 0; i < lines.length / 4; i++) {
+            this.drawLine(lines[i * 4] + x, lines[i * 4 + 1] + y, lines[i * 4 + 2] + x, lines[i * 4 + 3] + y, true);
+        }
+    }
+
+    public void drawFont(char character, int x, int y) {
+        this.drawLineSequence(FontLoader.font.get(character), x, y);
     }
 
     public void drawRect(int x, int y, int width, int height, boolean active) {
