@@ -20,6 +20,6 @@ public class Main {
     }
 
     private static void drawInit(LCDPanel display) {
-        display.drawLineSequence(FontLoader.font.get('0'), 0, 1);
+        display.drawPixelArray(new int[]{0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0}, 0, 0, 4);
     }
 }
