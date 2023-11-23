@@ -81,7 +81,20 @@ public class LCDPanel extends MotionPanel {
         }
     }
 
-    public void drawPixelArray(int[] pixels, int x, int y, int width) {
+    public void drawPixelArray(boolean[] pixels, int x, int y, int width) {
+        if (pixels.length % width != 0) {
+            System.err.println("Error: Invalid structure!");
+            return;
+        }
+
+        for (int i = 0; i < pixels.length/width; i++) {
+            for (int j = 0; j < width; j++) {
+                this.setPixel(x + j, y + i, pixels[i*width + j]);
+            }
+        }
+    }
+
+    public void drawPixelArray(byte[] pixels, int x, int y, int width) {
         if (pixels.length % width != 0) {
             System.err.println("Error: Invalid structure!");
             return;
@@ -103,10 +116,6 @@ public class LCDPanel extends MotionPanel {
         for (int i = 0; i < lines.length / 4; i++) {
             this.drawLine(lines[i * 4] + x, lines[i * 4 + 1] + y, lines[i * 4 + 2] + x, lines[i * 4 + 3] + y, true);
         }
-    }
-
-    public void drawFont(char character, int x, int y) {
-        this.drawLineSequence(FontLoader.font.get(character), x, y);
     }
 
     public void drawRect(int x, int y, int width, int height, boolean active) {

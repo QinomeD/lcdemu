@@ -20,11 +20,6 @@ public class Main {
     }
 
     private static void drawInit(LCDPanel display) {
-        /*
-        display.drawPixelArray(new int[]{1,1,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,1,1,1,1}, 0, 0, 5);
-        display.drawPixelArray(new int[]{0,0,1,0,0,0,1,1,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,1,1,0}, 5, 0, 5);
-        display.drawPixelArray(new int[]{1,1,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,1,1,1,1,0}, 10, 0, 5);
-        display.drawPixelArray(new int[]{1,1,1,1,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0}, 15, 0, 5);
-        */
+        display.drawPixelArray(FontLoader.font.get('5'), 0, 0, 5);
     }
 }
